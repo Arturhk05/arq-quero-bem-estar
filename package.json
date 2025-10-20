@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "start:dev": "nodemon --watch src --exec \"ts-node -r tsconfig-paths/register src/index.ts\" -e ts",
+    "start": "node dist/server.js",
+    "start:dev": "nodemon --watch src --exec \"ts-node -r tsconfig-paths/register src/server.ts\" -e ts",
     "test": "jest --passWithNoTests",
     "test:watch": "npm run test -- --watch",
     "test:staged": "npm run test -- --findRelatedTests",
@@ -19,6 +19,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@eslint/js": "^9.38.0",
+    "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.8.1",
     "eslint": "^9.38.0",
@@ -36,5 +37,8 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
