@@ -9,11 +9,29 @@ export interface CreateGroupRequest {
 }
 
 export class CreateGroupController implements Controller {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handle(request: HttpRequest): HttpResponse {
+    const { userId, name } = request.body as CreateGroupRequest
+
+    if (!userId) {
+      return {
+        status: 400,
+        body: new Error("Missing param: userId"),
+      }
+    }
+
+    if (!name) {
+      return {
+        status: 400,
+        body: new Error("Missing param: name"),
+      }
+    }
+
     return {
-      status: 400,
-      body: new Error("Missing param: userId"),
+      status: 200,
+      body: {
+        userId,
+        name,
+      },
     }
   }
 }
