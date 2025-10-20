@@ -7,16 +7,22 @@ export interface CreateGroupRequest {
   userId: string
   name: string
   description?: string
-  duracaoDias: number
+  durationInDays: number
 }
 
 export class CreateGroupController implements Controller {
   handle(request: HttpRequest): HttpResponse {
-    const { userId, name } = request.body as CreateGroupRequest
+    const { userId, name, durationInDays } = request.body as CreateGroupRequest
 
-    if (!userId) return badRequest(new MissingParamError("userId"))
-
-    if (!name) return badRequest(new MissingParamError("name"))
+    if (!userId) {
+      return badRequest(new MissingParamError("userId"))
+    }
+    if (!name) {
+      return badRequest(new MissingParamError("name"))
+    }
+    if (!durationInDays) {
+      return badRequest(new MissingParamError("durationInDays"))
+    }
 
     return {
       status: 200,
