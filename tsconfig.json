@@ -6,6 +6,13 @@
     "target": "ES2019",
     "esModuleInterop": true,
     "allowJs": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["*"]
+    },
+    "baseUrl": "src"
   },
   "include": ["src/**/*"]
 }
