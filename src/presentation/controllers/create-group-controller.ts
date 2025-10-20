@@ -1,3 +1,4 @@
+import { MissingParamError } from "../errors/MissingParamError"
 import { Controller } from "../protocols/controller"
 import { HttpRequest, HttpResponse } from "../protocols/http"
 
@@ -15,14 +16,14 @@ export class CreateGroupController implements Controller {
     if (!userId) {
       return {
         status: 400,
-        body: new Error("Missing param: userId"),
+        body: new MissingParamError("userId"),
       }
     }
 
     if (!name) {
       return {
         status: 400,
-        body: new Error("Missing param: name"),
+        body: new MissingParamError("name"),
       }
     }
 

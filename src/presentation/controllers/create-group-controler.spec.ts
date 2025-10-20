@@ -1,3 +1,4 @@
+import { MissingParamError } from "../errors/MissingParamError"
 import { CreateGroupController } from "./create-group-controller"
 
 describe("CreateGroupController", () => {
@@ -11,6 +12,7 @@ describe("CreateGroupController", () => {
     }
     const response = sut.handle(httpRequest)
     expect(response.status).toBe(400)
+    expect(response.body).toEqual(new MissingParamError("userId"))
   })
 
   it("should return 400 if name is not provided", () => {
@@ -23,5 +25,6 @@ describe("CreateGroupController", () => {
     }
     const response = sut.handle(httpRequest)
     expect(response.status).toBe(400)
+    expect(response.body).toEqual(new MissingParamError("name"))
   })
 })
