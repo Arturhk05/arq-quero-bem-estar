@@ -27,4 +27,17 @@ describe("CreateGroupController", () => {
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("name"))
   })
+
+  it("should return 400 if durationInDays is not provided", () => {
+    const sut = new CreateGroupController()
+    const httpRequest = {
+      body: {
+        userId: "any_user_id",
+        name: "any_name",
+      },
+    }
+    const response = sut.handle(httpRequest)
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual(new MissingParamError("durationInDays"))
+  })
 })
