@@ -12,7 +12,8 @@
     "paths": {
       "@/*": ["*"]
     },
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "isolatedModules": true
   },
   "include": ["src/**/*"]
 }
