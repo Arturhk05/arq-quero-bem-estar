@@ -1,3 +1,6 @@
+import Person from "."
+
 it("should do something", () => {
-  expect(true).toBe(true)
+  const person = new Person()
+  expect(person.sayMyName()).toBe("My name is John Doe")
 })
