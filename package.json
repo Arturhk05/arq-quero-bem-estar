@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon --watch src --exec \"ts-node src/index.ts\" -e ts",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
     "jiti": "^2.6.1",
+    "lint-staged": "^16.2.4",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
