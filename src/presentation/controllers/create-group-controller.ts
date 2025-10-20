@@ -1,3 +1,4 @@
+import { InvalidParamError } from "../errors/InvalidParamError"
 import { MissingParamError } from "../errors/MissingParamError"
 import { badRequest } from "../helper/http-helper"
 import { Controller } from "../protocols/controller"
@@ -22,6 +23,10 @@ export class CreateGroupController implements Controller {
     }
     if (!durationInDays) {
       return badRequest(new MissingParamError("durationInDays"))
+    }
+
+    if (durationInDays < 7 || durationInDays > 30) {
+      return badRequest(new InvalidParamError("durationInDays"))
     }
 
     return {
