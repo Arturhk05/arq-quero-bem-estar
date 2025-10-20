@@ -1,3 +1,4 @@
+import { InvalidParamError } from "../errors/InvalidParamError"
 import { MissingParamError } from "../errors/MissingParamError"
 import { CreateGroupController } from "./create-group-controller"
 
@@ -39,5 +40,33 @@ describe("CreateGroupController", () => {
     const response = sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("durationInDays"))
+  })
+
+  it("should return 400 if durationInDays is greater than 30", () => {
+    const sut = new CreateGroupController()
+    const httpRequest = {
+      body: {
+        userId: "any_user_id",
+        name: "any_name",
+        durationInDays: 31,
+      },
+    }
+    const response = sut.handle(httpRequest)
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual(new InvalidParamError("durationInDays"))
+  })
+
+  it("should return 400 if durationInDays is less than 7", () => {
+    const sut = new CreateGroupController()
+    const httpRequest = {
+      body: {
+        userId: "any_user_id",
+        name: "any_name",
+        durationInDays: 5,
+      },
+    }
+    const response = sut.handle(httpRequest)
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual(new InvalidParamError("durationInDays"))
   })
 })
