@@ -62,9 +62,9 @@ export class TypeOrmConnection {
     console.log("Database connection initialized")
   }
 
-  public getDataSource(): DataSource {
+  public async getDataSource(): Promise<DataSource | null> {
     if (!this.dataSource || !this.dataSource.isInitialized) {
-      throw new Error("DataSource not initialized. Call initialize() first")
+      await this.initialize()
     }
     return this.dataSource
   }
