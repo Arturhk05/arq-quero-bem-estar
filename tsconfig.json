@@ -13,7 +13,9 @@
       "@/*": ["*"]
     },
     "baseUrl": "src",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"]
 }
