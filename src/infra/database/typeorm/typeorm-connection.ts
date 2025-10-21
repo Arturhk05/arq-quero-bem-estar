@@ -30,11 +30,11 @@ export class TypeOrmConnection {
   public static getInstance(): TypeOrmConnection {
     if (!TypeOrmConnection.instance) {
       TypeOrmConnection.instance = new TypeOrmConnection({
-        host: env.db_host || "localhost",
-        port: env.db_port || 3306,
-        username: env.db_user || "root",
-        password: env.db_password || "",
-        database: env.db_name || "quero-bem-estar",
+        host: env.db_host,
+        port: env.db_port,
+        username: env.db_user,
+        password: env.db_password,
+        database: env.db_name,
       })
     }
     return TypeOrmConnection.instance
