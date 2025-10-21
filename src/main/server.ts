@@ -1,5 +1,6 @@
+import "dotenv/config"
 import express from "express"
-import env from "@/main/env"
+import env from "./config/env"
 
 const app = express()
 
