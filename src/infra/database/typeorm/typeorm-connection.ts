@@ -40,9 +40,9 @@ export class TypeOrmConnection {
     return TypeOrmConnection.instance
   }
 
-  public async initialize(): Promise<DataSource> {
+  public async initialize(): Promise<void> {
     if (this.dataSource && this.dataSource.isInitialized) {
-      return this.dataSource
+      return
     }
 
     this.dataSource = new DataSource({
@@ -60,7 +60,6 @@ export class TypeOrmConnection {
 
     await this.dataSource.initialize()
     console.log("Database connection initialized")
-    return this.dataSource
   }
 
   public getDataSource(): DataSource {
