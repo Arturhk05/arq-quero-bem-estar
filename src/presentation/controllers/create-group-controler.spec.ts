@@ -1,5 +1,5 @@
-import { InvalidParamError } from "../errors/InvalidParamError"
-import { MissingParamError } from "../errors/MissingParamError"
+import { InvalidParamError } from "../errors/invalid-param-error"
+import { MissingParamError } from "../errors/missing-param-error"
 import { CreateGroupController } from "./create-group-controller"
 
 describe("CreateGroupController", () => {
