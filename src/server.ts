@@ -1,7 +1,8 @@
 import express from "express"
-import "reflect-metadata"
+import env from "@/main/env"
 
 const app = express()
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000")
+
+app.listen(env.port, () => {
+  console.log(`Server is running on http://localhost:${env.port}`)
 })
