@@ -1,4 +1,8 @@
-import express from "express"
+import express, { Express } from "express"
+import setupRoutes from "./routes"
 
-const app = express()
-export default app
+export const setupApp = async (): Promise<Express> => {
+  const app = express()
+  setupRoutes(app)
+  return app
+}
