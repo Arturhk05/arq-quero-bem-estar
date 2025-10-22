@@ -3,7 +3,7 @@ import { MissingParamError } from "../errors/missing-param-error"
 import { CreateGroupController } from "./create-group-controller"
 
 describe("CreateGroupController", () => {
-  it("should return 400 if userId is not provided", () => {
+  it("should return 400 if userId is not provided", async () => {
     const sut = new CreateGroupController()
     const httpRequest = {
       body: {
@@ -11,12 +11,12 @@ describe("CreateGroupController", () => {
         duracaoDias: 30,
       },
     }
-    const response = sut.handle(httpRequest)
+    const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("userId"))
   })
 
-  it("should return 400 if name is not provided", () => {
+  it("should return 400 if name is not provided", async () => {
     const sut = new CreateGroupController()
     const httpRequest = {
       body: {
@@ -24,12 +24,12 @@ describe("CreateGroupController", () => {
         duracaoDias: 30,
       },
     }
-    const response = sut.handle(httpRequest)
+    const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("name"))
   })
 
-  it("should return 400 if durationInDays is not provided", () => {
+  it("should return 400 if durationInDays is not provided", async () => {
     const sut = new CreateGroupController()
     const httpRequest = {
       body: {
@@ -37,12 +37,12 @@ describe("CreateGroupController", () => {
         name: "any_name",
       },
     }
-    const response = sut.handle(httpRequest)
+    const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("durationInDays"))
   })
 
-  it("should return 400 if durationInDays is greater than 30", () => {
+  it("should return 400 if durationInDays is greater than 30", async () => {
     const sut = new CreateGroupController()
     const httpRequest = {
       body: {
@@ -51,12 +51,12 @@ describe("CreateGroupController", () => {
         durationInDays: 31,
       },
     }
-    const response = sut.handle(httpRequest)
+    const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new InvalidParamError("durationInDays"))
   })
 
-  it("should return 400 if durationInDays is less than 7", () => {
+  it("should return 400 if durationInDays is less than 7", async () => {
     const sut = new CreateGroupController()
     const httpRequest = {
       body: {
@@ -65,7 +65,7 @@ describe("CreateGroupController", () => {
         durationInDays: 5,
       },
     }
-    const response = sut.handle(httpRequest)
+    const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new InvalidParamError("durationInDays"))
   })

@@ -12,7 +12,7 @@ export interface CreateGroupRequest {
 }
 
 export class CreateGroupController implements Controller {
-  handle(request: HttpRequest): HttpResponse {
+  async handle(request: HttpRequest): Promise<HttpResponse> {
     const { userId, name, durationInDays } = request.body as CreateGroupRequest
 
     if (!userId) {
