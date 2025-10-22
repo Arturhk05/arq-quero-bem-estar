@@ -1,4 +1,3 @@
-import { InvalidParamError } from "../errors/invalid-param-error"
 import { MissingParamError } from "../errors/missing-param-error"
 import { CreateCompetitionController } from "./create-competition-controller"
 
@@ -40,33 +39,5 @@ describe("CreateCompetitionController", () => {
     const response = await sut.handle(httpRequest)
     expect(response.status).toBe(400)
     expect(response.body).toEqual(new MissingParamError("durationInDays"))
-  })
-
-  it("should return 400 if durationInDays is greater than 30", async () => {
-    const sut = new CreateCompetitionController()
-    const httpRequest = {
-      body: {
-        userId: "any_user_id",
-        name: "any_name",
-        durationInDays: 31,
-      },
-    }
-    const response = await sut.handle(httpRequest)
-    expect(response.status).toBe(400)
-    expect(response.body).toEqual(new InvalidParamError("durationInDays"))
-  })
-
-  it("should return 400 if durationInDays is less than 7", async () => {
-    const sut = new CreateCompetitionController()
-    const httpRequest = {
-      body: {
-        userId: "any_user_id",
-        name: "any_name",
-        durationInDays: 5,
-      },
-    }
-    const response = await sut.handle(httpRequest)
-    expect(response.status).toBe(400)
-    expect(response.body).toEqual(new InvalidParamError("durationInDays"))
   })
 })

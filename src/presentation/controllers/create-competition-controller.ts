@@ -1,7 +1,6 @@
-import { InvalidParamError } from "../errors/invalid-param-error"
 import { MissingParamError } from "../errors/missing-param-error"
 import { badRequest } from "../helper/http-helper"
-import { Controller } from "../protocols/controller"
+import { IController } from "../protocols/controller"
 import { HttpRequest, HttpResponse } from "../protocols/http"
 
 export interface CreateCompetitionRequest {
@@ -11,7 +10,7 @@ export interface CreateCompetitionRequest {
   durationInDays: number
 }
 
-export class CreateCompetitionController implements Controller {
+export class CreateCompetitionController implements IController {
   async handle(request: HttpRequest): Promise<HttpResponse> {
     const { userId, name, durationInDays } =
       request.body as CreateCompetitionRequest
@@ -24,10 +23,6 @@ export class CreateCompetitionController implements Controller {
     }
     if (!durationInDays) {
       return badRequest(new MissingParamError("durationInDays"))
-    }
-
-    if (durationInDays < 7 || durationInDays > 30) {
-      return badRequest(new InvalidParamError("durationInDays"))
     }
 
     return {
