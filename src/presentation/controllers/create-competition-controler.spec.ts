@@ -1,6 +1,6 @@
 import { InvalidParamError } from "../errors/invalid-param-error"
 import { MissingParamError } from "../errors/missing-param-error"
-import { CreateCompetitionController } from "./create-group-controller"
+import { CreateCompetitionController } from "./create-competition-controller"
 
 describe("CreateCompetitionController", () => {
   it("should return 400 if userId is not provided", async () => {
