@@ -23,9 +23,6 @@ export class CompetitionModel {
   @Column()
   ownerId: number
 
-  @Column({ type: "json", default: [] })
-  participantIds: number[]
-
   @Column()
   createdAt: Date
 
