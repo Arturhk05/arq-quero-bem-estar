@@ -1,14 +1,12 @@
 import "dotenv/config"
 import "reflect-metadata"
-import express from "express"
 import env from "./config/env"
 import { TypeOrmConnection } from "@/infra/database/typeorm/typeorm-connection"
-
-const app = express()
+import app from "./config/app"
 
 TypeOrmConnection.getInstance()
   .initialize()
-  .then(() => {
+  .then(async () => {
     app.listen(env.port, () => {
       console.log(`Server is running on http://localhost:${env.port}`)
     })
