@@ -1,14 +1,14 @@
 import { InvalidParamError } from "../errors/invalid-param-error"
 import { MissingParamError } from "../errors/missing-param-error"
-import { CreateGroupController } from "./create-group-controller"
+import { CreateCompetitionController } from "./create-group-controller"
 
-describe("CreateGroupController", () => {
+describe("CreateCompetitionController", () => {
   it("should return 400 if userId is not provided", async () => {
-    const sut = new CreateGroupController()
+    const sut = new CreateCompetitionController()
     const httpRequest = {
       body: {
         name: "any_name",
-        duracaoDias: 30,
+        durationInDays: 30,
       },
     }
     const response = await sut.handle(httpRequest)
@@ -17,11 +17,11 @@ describe("CreateGroupController", () => {
   })
 
   it("should return 400 if name is not provided", async () => {
-    const sut = new CreateGroupController()
+    const sut = new CreateCompetitionController()
     const httpRequest = {
       body: {
         userId: "any_user_id",
-        duracaoDias: 30,
+        durationInDays: 30,
       },
     }
     const response = await sut.handle(httpRequest)
@@ -30,7 +30,7 @@ describe("CreateGroupController", () => {
   })
 
   it("should return 400 if durationInDays is not provided", async () => {
-    const sut = new CreateGroupController()
+    const sut = new CreateCompetitionController()
     const httpRequest = {
       body: {
         userId: "any_user_id",
@@ -43,7 +43,7 @@ describe("CreateGroupController", () => {
   })
 
   it("should return 400 if durationInDays is greater than 30", async () => {
-    const sut = new CreateGroupController()
+    const sut = new CreateCompetitionController()
     const httpRequest = {
       body: {
         userId: "any_user_id",
@@ -57,7 +57,7 @@ describe("CreateGroupController", () => {
   })
 
   it("should return 400 if durationInDays is less than 7", async () => {
-    const sut = new CreateGroupController()
+    const sut = new CreateCompetitionController()
     const httpRequest = {
       body: {
         userId: "any_user_id",

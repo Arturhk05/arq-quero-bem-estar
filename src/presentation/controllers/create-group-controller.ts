@@ -4,16 +4,17 @@ import { badRequest } from "../helper/http-helper"
 import { Controller } from "../protocols/controller"
 import { HttpRequest, HttpResponse } from "../protocols/http"
 
-export interface CreateGroupRequest {
+export interface CreateCompetitionRequest {
   userId: string
   name: string
   description?: string
   durationInDays: number
 }
 
-export class CreateGroupController implements Controller {
+export class CreateCompetitionController implements Controller {
   async handle(request: HttpRequest): Promise<HttpResponse> {
-    const { userId, name, durationInDays } = request.body as CreateGroupRequest
+    const { userId, name, durationInDays } =
+      request.body as CreateCompetitionRequest
 
     if (!userId) {
       return badRequest(new MissingParamError("userId"))
