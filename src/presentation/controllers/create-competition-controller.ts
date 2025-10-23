@@ -4,7 +4,6 @@ import { IController } from "../protocols/controller"
 import { HttpRequest, HttpResponse } from "../protocols/http"
 
 export interface CreateCompetitionRequest {
-  userId: string
   name: string
   description?: string
   durationInDays: number
@@ -12,24 +11,25 @@ export interface CreateCompetitionRequest {
 
 export class CreateCompetitionController implements IController {
   async handle(request: HttpRequest): Promise<HttpResponse> {
-    const { userId, name, durationInDays } =
-      request.body as CreateCompetitionRequest
+    const temporaryOwnerId = 1
 
-    if (!userId) {
-      return badRequest(new MissingParamError("userId"))
-    }
+    const { name, durationInDays } = request.body as CreateCompetitionRequest
+
     if (!name) {
+      console.log("Missing param: name")
       return badRequest(new MissingParamError("name"))
     }
     if (!durationInDays) {
+      console.log("Missing param: durationInDays")
       return badRequest(new MissingParamError("durationInDays"))
     }
 
     return {
       statusCode: 200,
       body: {
-        userId,
+        ownerId: temporaryOwnerId,
         name,
+        durationInDays,
       },
     }
   }
