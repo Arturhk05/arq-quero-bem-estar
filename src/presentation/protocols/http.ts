@@ -4,6 +4,6 @@ export interface HttpRequest<T = unknown> {
 }
 
 export interface HttpResponse<T = unknown> {
-  status: number
+  statusCode: number
   body: T
 }

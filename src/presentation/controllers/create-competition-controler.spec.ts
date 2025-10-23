@@ -11,7 +11,7 @@ describe("CreateCompetitionController", () => {
       },
     }
     const response = await sut.handle(httpRequest)
-    expect(response.status).toBe(400)
+    expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new MissingParamError("userId"))
   })
 
@@ -24,7 +24,7 @@ describe("CreateCompetitionController", () => {
       },
     }
     const response = await sut.handle(httpRequest)
-    expect(response.status).toBe(400)
+    expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new MissingParamError("name"))
   })
 
@@ -37,7 +37,7 @@ describe("CreateCompetitionController", () => {
       },
     }
     const response = await sut.handle(httpRequest)
-    expect(response.status).toBe(400)
+    expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new MissingParamError("durationInDays"))
   })
 })
